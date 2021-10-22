@@ -9,8 +9,7 @@ function Categories({categoryNames}) {
       updateActiveCategoriesIds([]);
       return;
     }
-  
-    console.log("called2")
+
     if (activeCategoriesIds.includes(categoryId))
       updateActiveCategoriesIds(activeCategoriesIds.filter(el => el !== categoryId));
     else
