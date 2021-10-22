@@ -10,7 +10,7 @@ function App() {
           <div className="content__top">
             <div className="categories">
               <ul>
-                <Categories categoriesList={['Тест1', 'Тест2']} activeCategoriesList={'Тест1'} />
+                <Categories categoryNames={['Мясные', 'Вегетарианские']} />
               </ul>
             </div>
             <div className="sort">
