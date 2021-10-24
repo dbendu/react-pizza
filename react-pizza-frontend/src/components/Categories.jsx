@@ -1,11 +1,11 @@
 import React from "react";
 
 function Categories({categoryNames}) {
-  const AllCategoriesButtonId = -1;
+  const AllCategoriesButtonIndex = -1;
   const [activeCategoriesIds, updateActiveCategoriesIds] = React.useState([])
 
-  const onButtonClick = (categoryId) => {
-    if (categoryId === AllCategoriesButtonId) {
+  const onCategoryButtonClick = (categoryId) => {
+    if (categoryId === AllCategoriesButtonIndex) {
       updateActiveCategoriesIds([]);
       return;
     }
@@ -23,7 +23,7 @@ function Categories({categoryNames}) {
 
     return (
       <li
-        onClick={() => onButtonClick(categoryId)}
+        onClick={() => onCategoryButtonClick(categoryId)}
         key = {categoryName}
         className = {className}
       >
@@ -43,14 +43,12 @@ function Categories({categoryNames}) {
   return (
     <div className='categories'>
       <ul>
-        {composeCategoryButton('Все', AllCategoriesButtonId, isAllCategoriesButtonActive())}
-        
-        {
-          categoryNames.map((categoryName, index) => (
-            composeCategoryButton(categoryName, index, isCategoryButtonActive(index))
-          ))
-        }
+        {composeCategoryButton('Все', AllCategoriesButtonIndex, isAllCategoriesButtonActive())}
 
+        {
+          categoryNames.map((categoryName, index) =>
+            composeCategoryButton(categoryName, index, isCategoryButtonActive(index)))
+        }
       </ul>
     </div>
   );
