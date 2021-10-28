@@ -1,3 +1,5 @@
+## front
+
 # dependencies
 node_modules/
 .pnp/
@@ -21,3 +23,10 @@ yarn-debug.log*
 yarn-error.log*
 
 .vscode
+
+## back
+
+obj/
+bin/
+
+.vs/
