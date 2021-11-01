@@ -1,18 +1,32 @@
-import { Categories, SortPopup, PizzaBlock } from '../components'
+import { useSelector, useDispatch } from 'react-redux';
 
-function MainPage({ pizzas }) {
+import { PizzaCategories, /*SortPopup,*/ PizzaBlock } from '../components'
+import pizzaCategoriesFilterChangedAction from '../redux/reducers/pizzas/actions/pizza-categories-filter-changed-action'
+
+function MainPage() {
+  const dispatch = useDispatch();
+  const {
+    pizzaCategories,
+    activePizzas
+  } = useSelector(({ pizzaCategories, activePizzas }) => ({ pizzaCategories, activePizzas }));
+
+  const onPizzaByCategoriesFilterChanged = (activeCategories) => {
+    dispatch(pizzaCategoriesFilterChangedAction(activeCategories))
+  }
+
   return (
     <div className="container">
       <div className="content__top">
-        <Categories
-          categoryNames={['Мясные', 'Вегетарианские']}
+        <PizzaCategories
+          categories={pizzaCategories}
+          onActiveCategoriesChanged={onPizzaByCategoriesFilterChanged}
         />
-        <SortPopup sortByParams={['популярности', 'цене']} />
+        {/* <SortPopup sortByParams={['популярности', 'цене']} /> */}
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
         {
-          pizzas.map((pizza) => <PizzaBlock key={pizza.id} {...pizza} />)
+          activePizzas.map((pizza) => <PizzaBlock key={pizza.id} {...pizza} />)
         }
       </div>
     </div>

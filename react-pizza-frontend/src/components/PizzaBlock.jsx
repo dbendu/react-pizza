@@ -1,9 +1,9 @@
-function PizzaBlock({ imageUrl, name, price, sizes }) {
+function PizzaBlock({ name, imageSrc, minPrice }) {
   return (
     <div className="pizza-block">
       <img
         className="pizza-block__image"
-        src={imageUrl}
+        src={imageSrc}
         alt="Pizza"
       />
       <h4 className="pizza-block__title">{name}</h4>
@@ -19,7 +19,7 @@ function PizzaBlock({ imageUrl, name, price, sizes }) {
         </ul>
       </div>
       <div className="pizza-block__bottom">
-        <div className="pizza-block__price">от {price} ₽</div>
+        <div className="pizza-block__price">от {minPrice} ₽</div>
         <div className="button button--outline button--add">
           <svg
             width="12"
